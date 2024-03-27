@@ -1,9 +1,15 @@
 #!/bin/bash
-echo "Runner Name : $1" >> temp
-echo "Host Name   : $(hostname)" >> temp
-echo "User Name   : $(whoami)" >> temp
-echo "Date        : $(date)" >> temp
+echo "$(date)" > temp
 echo "" >> temp
+echo "Runner Name      : $1" >> temp
+echo "Host Name        : $(hostname)" >> temp
+echo "User Name        : $(whoami)" >> temp
+echo "Operating System : $(uname -s)" >> temp
+echo "Architecture     : $(uname -m)" >> temp
+echo "Processor        : $(awk -F': ' '/model name/{print $2;exit}' /proc/cpuinfo)" >> temp
+echo "RAM              : $(awk '/MemTotal/ { printf "%.1f\n", $2/1024/1024 }' /proc/meminfo)GB" >> temp
+echo "" >> temp
+echo "TOOLS INSTALLED:" >> temp
 
 # COCOTB
     which cocotb-config && \
@@ -52,4 +58,5 @@ echo "" >> temp
 clear
 cat temp
 rm -rf temp
+
 
