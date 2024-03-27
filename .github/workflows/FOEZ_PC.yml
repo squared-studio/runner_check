@@ -1,0 +1,19 @@
+name: CHECK FOEZ_PC # TODO
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  CHECK:
+  
+    runs-on: FOEZ_PC # TODO
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: CHECK
+      shell: bash
+      run:
+        bash dependency_check.sh FOEZ_PC # TODO
+        
