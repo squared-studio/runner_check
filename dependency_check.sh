@@ -12,46 +12,44 @@ echo "" >> temp
 echo "TOOLS INSTALLED:" >> temp
 
 # COCOTB
-    which cocotb-config && \
+    cocotb-config.exe -v && \
     echo -e "\033[1;32mcocotb\033[0m" >> temp || \
     echo -e "\033[1;31mcocotb\033[0m" >> temp
 
 # GCC
-    which GCC && \
+    gcc -v && \
     echo -e "\033[1;32mGNU Compiler Collections\033[0m" >> temp || \
     echo -e "\033[1;31mGNU Compiler Collections\033[0m" >> temp
 
 # GNU Make
-    which make && \
+    make -v && \
     echo -e "\033[1;32mGNU Make\033[0m" >> temp || \
     echo -e "\033[1;31mGNU Make\033[0m" >> temp
 
 # Icarus Verilog
-    which iverilog && \
+    iverilog -V && \
     echo -e "\033[1;32mIcarus Verilog\033[0m" >> temp || \
     echo -e "\033[1;31mIcarus Verilog\033[0m" >> temp
 
-# Python
-    echo "print('Hi')" > test.py
-    (python3 test.py && \
-    echo -e "\033[1;32mPython3\033[0m" >> temp) || \
-    (python test.py && \
-    echo -e "\033[1;32mPython\033[0m" >> temp) || \
-    echo -e "\033[1;31mPython\033[0m" >> temp
-    rm -rf test.py
-
-# Verilator
-    which vsim && \
+# Intel Questa
+    vsim -h && \
     echo -e "\033[1;32mIntel Questa\033[0m" >> temp || \
     echo -e "\033[1;31mIntel Questa\033[0m" >> temp
 
+# Python
+    (python3 -V && \
+    echo -e "\033[1;32mPython3\033[0m" >> temp) || \
+    (python -V && \
+    echo -e "\033[1;32mPython\033[0m" >> temp) || \
+    echo -e "\033[1;31mPython\033[0m" >> temp
+
 # Verilator
-    which verilator && \
+    verilator --version && \
     echo -e "\033[1;32mVerilator\033[0m" >> temp || \
     echo -e "\033[1;31mVerilator\033[0m" >> temp
 
 # Vivado
-    which vivado && \
+    xsim -h && \
     echo -e "\033[1;32mXilinx Vivado\033[0m" >> temp || \
     echo -e "\033[1;31mXilinx Vivado\033[0m" >> temp
 
