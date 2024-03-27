@@ -1,0 +1,19 @@
+name: CHECK Sakib_ubu # TODO
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  CHECK:
+  
+    runs-on: Sakib_ubu # TODO
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: CHECK
+      shell: bash
+      run:
+        bash dependency_check.sh Sakib_ubu # TODO
+        
